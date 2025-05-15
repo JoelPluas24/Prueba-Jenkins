@@ -18,28 +18,54 @@ public class ProductoServiceTest {
     }
 
     @Test
-    public void testAgregarProducto() {
+    public void debeAgregarProductoCorrectamente() {
+        // Arrange
         Producto nuevo = new Producto("Juego", 45.00);
+
+        // Act
         productoService.agregarProducto(nuevo);
+
+        // Assert
         assertEquals(3, productoService.listarProductos().size());
     }
 
     @Test
-    public void testListarProductos() {
+    public void debeListarTodosLosProductos() {
+        // Act
         List<Producto> productos = productoService.listarProductos();
+
+        // Assert
         assertEquals(2, productos.size());
     }
 
     @Test
-    public void testBuscarPorNombreExistente() {
+    public void debeEncontrarProductoPorNombreExistente() {
+        // Act
         Producto resultado = productoService.buscarPorNombre("libro");
+
+        // Assert
         assertNotNull(resultado);
         assertEquals("Libro", resultado.getNombre());
     }
 
     @Test
-    public void testBuscarPorNombreInexistente() {
+    public void debeRetornarNullSiProductoNoExiste() {
+        // Act
         Producto resultado = productoService.buscarPorNombre("Zapato");
+
+        // Assert
         assertNull(resultado);
+    }
+
+    @Test
+    public void debePermitirAgregarProductosConNombreDuplicado() {
+        // Arrange
+        Producto duplicado = new Producto("Libro", 15.00);
+
+        // Act
+        productoService.agregarProducto(duplicado);
+
+        // Assert
+        assertEquals(3, productoService.listarProductos().size());
     }
 }
