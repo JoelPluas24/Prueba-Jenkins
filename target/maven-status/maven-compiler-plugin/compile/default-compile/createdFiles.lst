@@ -1,0 +1,3 @@
+com\tienda\GestionTienda.class
+com\tienda\model\Producto.class
+com\tienda\service\ProductoService.class
