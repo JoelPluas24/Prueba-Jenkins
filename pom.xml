@@ -42,4 +42,20 @@
         <maven.compiler.release>24</maven.compiler.release>
         <exec.mainClass>com.tienda.gestiontienda.GestionTienda</exec.mainClass>
     </properties>
+    <build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.0.0-M9</version>
+            <dependencies>
+                <dependency>
+                    <groupId>org.junit.platform</groupId>
+                    <artifactId>junit-platform-surefire-provider</artifactId>
+                    <version>1.3.2</version>
+                </dependency>
+            </dependencies>
+        </plugin>
+    </plugins>
+</build>
 </project>
